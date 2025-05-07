@@ -1,19 +1,25 @@
 name: Despliega el proyecto
+
 on: [push, workflow_dispatch]
+
 jobs: 
-build: 
-  runs-on: ubuntu-latest
-  steps: 
-    - name: Obtener el codigo fuente
-      uses: actions/checkout@v4
-    - name: Instalar nodeJS
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20.17
-    - name: Instala las dependencias del proyecto 
-      run: npm ci
-    - name: ejecuta las pruebas unitarias
-      run: npm test
-    - name: Ejecutar el analizador 
-      run: npm lint
+  build: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Obtener el codigo fuente
+        uses: actions/checkout@v4
+
+      - name: Instalar nodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.17
+
+      - name: Instala las dependencias del proyecto 
+        run: npm ci
+
+      - name: Ejecuta las pruebas unitarias
+        run: npm test
+
+      - name: Ejecutar el analizador 
+        run: npm run lint
 
